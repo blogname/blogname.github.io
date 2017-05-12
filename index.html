@@ -151,6 +151,60 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React Router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/12/React Router/">React Router</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/12/React Router/" class="archive-article-date">
+  	<time datetime="2017-05-12T05:46:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、React-Router的作用"><a href="#1、React-Router的作用" class="headerlink" title="1、React Router的作用"></a>1、React Router的作用</h3><p> <strong>一、</strong>React Router解决了React components 到URl之间的同步映射关系<br> <strong>二、</strong>Route组件定义了URL路径与组件的对应关系<br> <strong>三、</strong>路由器Router其实就是React的一个组件，在使用的时候，直接引用。</p>
+<h5 id="下面举一个例子，在没有使用React-Router时，我们的代码"><a href="#下面举一个例子，在没有使用React-Router时，我们的代码" class="headerlink" title="下面举一个例子，在没有使用React Router时，我们的代码"></a>下面举一个例子，在没有使用React Router时，我们的代码</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">var About = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="built_in">return</span> &lt;h2&gt;About&lt;/h2&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var Inbox = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="built_in">return</span> &lt;h2&gt;Inbox&lt;/h2&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var Home = React.createClass(&#123;</div><div class="line">  render: <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="built_in">return</span> &lt;h2&gt;Home&lt;/h2&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var App = React.createClass(&#123;</div><div class="line">  <span class="function"><span class="title">render</span></span> () &#123;</div><div class="line">    var Child;</div><div class="line">    switch (this.props.route) &#123;</div><div class="line">      <span class="keyword">case</span> <span class="string">'about'</span>: Child = About; <span class="built_in">break</span>;</div><div class="line">      <span class="keyword">case</span> <span class="string">'inbox'</span>: Child = Inbox; <span class="built_in">break</span>;</div><div class="line">      default:      Child = Home;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;h1&gt;App&lt;/h1&gt;</div><div class="line">        &lt;Child/&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">render</span></span> () &#123;</div><div class="line">  var route = window.location.hash.substr(1);</div><div class="line">  React.render(&lt;App route=&#123;route&#125; /&gt;, document.body);</div><div class="line">&#125;</div><div class="line"></div><div class="line">window.addEventListener(<span class="string">'hashchange'</span>, render);</div><div class="line">render(); // render initially</div></pre></td></tr></table></figure>
+<p> <strong>一、</strong>在hash值改变的时候，App 将会根据this.props.route值的改变来动态渲染 <child> component。<br> <strong>二、</strong>这样的做法虽然看起来很直接，但是会导致整个应用程序变得更加复杂。比如，如果组件 Inbox 有一些内嵌的子组件需要根据 例如 inbox/message/:id 或者 inbox/unread 等这样的路由规则做动态渲染的时候。我们需要一些更加智能的手段来把路由信息传递给我们的App，这样Inbox 组件可以根据URL的映射关系来控制哪些子组件应该需要被渲染。<br> <strong>三、</strong>很多组件应该根据URL的规则来做动态渲染。在不使用路由规则的前提下，复杂一点的路由需求就需要我们写很多条件判断的代码去去解决实RL和层级组件的同步问题。</child></p>
+<h5 id="引入React-Router"><a href="#引入React-Router" class="headerlink" title="引入React Router"></a>引入React Router</h5> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">var Router = require(<span class="string">'react-router'</span>);</div><div class="line"> var Route = Router.Route;</div><div class="line"></div><div class="line"> // <span class="built_in">declare</span> our routes and their hierarchy</div><div class="line"> var routes = (</div><div class="line">   &lt;Route handler=&#123;App&#125;&gt;</div><div class="line">     &lt;Route path=<span class="string">"about"</span> handler=&#123;About&#125;/&gt;</div><div class="line">     &lt;Route path=<span class="string">"inbox"</span> handler=&#123;Inbox&#125;/&gt;</div><div class="line">   &lt;/Route&gt;</div><div class="line"> );</div><div class="line"></div><div class="line"> var RouteHandler = Router.RouteHandler;</div><div class="line"></div><div class="line"> var App = React.createClass(&#123;</div><div class="line">   <span class="function"><span class="title">render</span></span> () &#123;</div><div class="line">     <span class="built_in">return</span> (</div><div class="line">       &lt;div&gt;</div><div class="line">         &lt;h1&gt;App&lt;/h1&gt;</div><div class="line">         &lt;RouteHandler/&gt;</div><div class="line">       &lt;/div&gt;</div><div class="line">     )</div><div class="line">   &#125;</div><div class="line"> &#125;);</div><div class="line"></div><div class="line">  Router.run(routes, Router.HashLocation, (Root) =&gt; &#123;</div><div class="line">   React.render(&lt;Root/&gt;, document.body);</div><div class="line"> &#125;);</div><div class="line"></div><div class="line"> var Message = React.createClass(&#123;</div><div class="line">   <span class="function"><span class="title">render</span></span> () &#123;</div><div class="line">     <span class="built_in">return</span> &lt;h3&gt;Message&lt;/h3&gt;;</div><div class="line">   &#125;</div><div class="line"> &#125;);</div><div class="line"></div><div class="line"> var routes = (</div><div class="line">   &lt;Route handler=&#123;App&#125;&gt;</div><div class="line">     &lt;Route path=<span class="string">"about"</span> handler=&#123;About&#125;/&gt;</div><div class="line">     &lt;Route path=<span class="string">"inbox"</span> handler=&#123;Inbox&#125;&gt;</div><div class="line">       &lt;Route path=<span class="string">"messages/:id"</span> handler=&#123;Message&#125;/&gt;</div><div class="line">     &lt;/Route&gt;</div><div class="line">   &lt;/Route&gt;</div><div class="line"> );</div></pre></td></tr></table></figure>
+<p> <strong>一、</strong>Root 是 React Router 路由匹配后决定渲染的最高层级的组件，告诉 RouterHandle 应该渲染的内容是什么。<router> 组件是不会被渲染的。只是一个创建内部路由规则的配置对象。<br> <strong>二、</strong>解决复杂的URL和层级组件之间的映射关系式React Router 的核心。<br> <strong>三、</strong>使用声明式的方式为举的例子引入路由。使用JSX的方式来进行路由的配置，这样就可以通过属性的方式来配置页面视图的层级关系。</router></p>
+<h3 id="2、Redirect-组件"><a href="#2、Redirect-组件" class="headerlink" title="2、Redirect 组件"></a>2、Redirect 组件</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Route path=<span class="string">"inbox"</span> component=&#123;Inbox&#125;&gt;</div><div class="line">   &#123;/* 从 /inbox/messages/:id 跳转到 /messages/:id */&#125;</div><div class="line">   ＜Redirect from=<span class="string">"messages/:id"</span> to=<span class="string">"/messages/:id"</span> /&gt;</div><div class="line"> &lt;/Route&gt;</div></pre></td></tr></table></figure>
+<p> <strong>一、</strong>Redirect组件用于路由的跳转，即用户访问一个路由，会自动跳转到另一个路由。<br> <strong>二、</strong>{/<em> 从 /inbox/messages/:id 跳转到 /messages/:id </em>/}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/12/React Router/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-React练习Todolist" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -171,7 +225,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="todolist"><a href="#todolist" class="headerlink" title="todolist"></a>todolist</h2><h4 id="页面效果"><a href="#页面效果" class="headerlink" title="页面效果"></a>页面效果</h4><p><img src="/img/main.png" alt="页面效果"></p>
+        <h2 id="todolist"><a href="#todolist" class="headerlink" title="todolist"></a>todolist</h2><p><strong>页面效果</strong><br><img src="/img/main.png" alt="页面效果"></p>
 <h3 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h3><ul>
 <li>1、用户可以添加任务，当用户输入的内容为空时，不添加。</li>
 <li>2、用户可以随时切换任务的完成状态，并进行显示提示已完成数量与总任务数量</li>
@@ -283,71 +337,6 @@
 
 
   
-    <article id="post-React表单组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/React表单组件/">React表单组件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/25/React表单组件/" class="archive-article-date">
-  	<time datetime="2017-04-25T04:45:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、像是input、textarea、option这样的表单组件不同于其他组件，因为他们可以通过用户交互发生变化。这些组件提供的界面使响应用户交互的表单数据处理更加容易。<br>2、交互属性<br>表单组件支持几个受用户交互影响的属性<br>value，用于input、textarea组件；checked，用于类型为checkbox或者radio的input组件；selected，用于option组件。<br>在HTML中，textarea的值通过子节点设置，在React中则应该使用value代替。表单组件可以通过onChange会调函数来监听组件变化。当用户做出以下交互时，onChange执行并通过浏览器做出响应：</p>
-<ul>
-<li>input 或 textarea 的 value 发生变化时。</li>
-<li>input 的 checked 状态改变时。</li>
-<li>option 的 selected 状态改变时。</li>
-</ul>
-<p>和所有的DOM事件一样，所有的HTML原生组件都支持onChange属性，而且可以用来监听冒泡的change事件。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React表单</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/React表单组件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-React组件生命周期" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -355,13 +344,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/React组件生命周期/">React组件生命周期</a>
+      <a class="article-title" href="/2017/04/24/React组件生命周期/">React组件生命周期</a>
     </h1>
   
 
         
-        <a href="/2017/04/25/React组件生命周期/" class="archive-article-date">
-  	<time datetime="2017-04-25T04:45:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
+        <a href="/2017/04/24/React组件生命周期/" class="archive-article-date">
+  	<time datetime="2017-04-24T04:45:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-24</time>
 </a>
         
       </header>
@@ -452,7 +441,72 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/React组件生命周期/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/24/React组件生命周期/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-React表单组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/21/React表单组件/">React表单组件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/21/React表单组件/" class="archive-article-date">
+  	<time datetime="2017-04-21T04:45:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、像是input、textarea、option这样的表单组件不同于其他组件，因为他们可以通过用户交互发生变化。这些组件提供的界面使响应用户交互的表单数据处理更加容易。<br>2、交互属性<br>表单组件支持几个受用户交互影响的属性<br>value，用于input、textarea组件；checked，用于类型为checkbox或者radio的input组件；selected，用于option组件。<br>在HTML中，textarea的值通过子节点设置，在React中则应该使用value代替。表单组件可以通过onChange会调函数来监听组件变化。当用户做出以下交互时，onChange执行并通过浏览器做出响应：</p>
+<ul>
+<li>input 或 textarea 的 value 发生变化时。</li>
+<li>input 的 checked 状态改变时。</li>
+<li>option 的 selected 状态改变时。</li>
+</ul>
+<p>和所有的DOM事件一样，所有的HTML原生组件都支持onChange属性，而且可以用来监听冒泡的change事件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React表单</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/21/React表单组件/">展开全文 >></a>
         </p>
       
 
@@ -474,13 +528,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/React历程/">React历程</a>
+      <a class="article-title" href="/2017/04/20/React历程/">React历程</a>
     </h1>
   
 
         
-        <a href="/2017/04/25/React历程/" class="archive-article-date">
-  	<time datetime="2017-04-25T04:44:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
+        <a href="/2017/04/20/React历程/" class="archive-article-date">
+  	<time datetime="2017-04-20T04:44:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-20</time>
 </a>
         
       </header>
@@ -506,7 +560,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/React历程/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/20/React历程/">展开全文 >></a>
         </p>
       
 
@@ -528,13 +582,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/04/18/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2017/04/25/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-25T04:14:18.428Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
+        <a href="/2017/04/18/hello-world/" class="archive-article-date">
+  	<time datetime="2017-04-18T05:46:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
 </a>
         
       </header>
@@ -562,7 +616,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/18/hello-world/">展开全文 >></a>
         </p>
       
 
