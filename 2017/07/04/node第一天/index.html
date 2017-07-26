@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: React表单 | Hexo</title>
+  <title>node第一天 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/React表单/index.html">
+  <meta name="description" content="《搭建 Node.js 开发环境》其实这过程特别简单: node的版本管理工具，可以用来安装、切换node的版本， 先安装一个 nvm（ https://github.com/creationix/nvm ）1$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash nvm 的全称是">
+<meta name="keywords" content="node nvm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node第一天">
+<meta property="og:url" content="http://yoursite.com/2017/07/04/node第一天/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="《搭建 Node.js 开发环境》其实这过程特别简单: node的版本管理工具，可以用来安装、切换node的版本， 先安装一个 nvm（ https://github.com/creationix/nvm ）1$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash nvm 的全称是">
+<meta property="og:image" content="https://raw.githubusercontent.com/alsotang/node-lessons/master/lesson0/1.png">
+<meta property="og:image" content="http://yoursite.com/img/cmdorder.png">
+<meta property="og:image" content="http://yoursite.com/img/helloworld.png">
+<meta property="og:updated_time" content="2017-07-10T01:56:00.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="node第一天">
+<meta name="twitter:description" content="《搭建 Node.js 开发环境》其实这过程特别简单: node的版本管理工具，可以用来安装、切换node的版本， 先安装一个 nvm（ https://github.com/creationix/nvm ）1$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash nvm 的全称是">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/alsotang/node-lessons/master/lesson0/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,60 +158,237 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-node第一天" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/21/React表单组件/" class="archive-article-date">
-  	<time datetime="2017-04-21T04:45:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/21/React表单组件/">React表单组件</a>
+    <h1 class="article-title" itemprop="name">
+      node第一天
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/04/node第一天/" class="archive-article-date">
+  	<time datetime="2017-07-04T07:51:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="《搭建-Node-js-开发环境》"><a href="#《搭建-Node-js-开发环境》" class="headerlink" title="《搭建 Node.js 开发环境》"></a>《搭建 Node.js 开发环境》</h1><p>其实这过程特别简单:</p>
+<p>node的版本管理工具，可以用来安装、切换node的版本，</p>
+<h3 id="先安装一个-nvm（-https-github-com-creationix-nvm-）"><a href="#先安装一个-nvm（-https-github-com-creationix-nvm-）" class="headerlink" title="先安装一个 nvm（ https://github.com/creationix/nvm ）"></a>先安装一个 nvm（ <a href="https://github.com/creationix/nvm" target="_blank" rel="external">https://github.com/creationix/nvm</a> ）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash</div></pre></td></tr></table></figure>
+<p>nvm 的全称是 <strong>Node Version Manager</strong>，之所以需要这个工具，是因为 Node.js 的各种特性都没<br>有稳定下来，所以我们经常由于老项目或尝新的原因，需要切换各种版本。</p>
+<p>安装完成后，你的 shell 里面应该就有个 nvm 命令了，调用它试试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm</div></pre></td></tr></table></figure>
+<p>当看到有输出时，则 nvm 安装成功。</p>
+<h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>使用 nvm 的命令安装 Node.js 最新稳定版，现在是 <code>v0.12.3</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install 0.12</div></pre></td></tr></table></figure>
+<p>安装完成后，查看一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm ls</div></pre></td></tr></table></figure>
+<p>这时候可以看到自己安装的所有 Node.js 版本，输出应如下：</p>
+<p><img src="https://raw.githubusercontent.com/alsotang/node-lessons/master/lesson0/1.png" alt=""></p>
+<p>（图1）</p>
+<p>那个绿色小箭头的意思就是现在正在使用的版本，我这里是 <code>v0.10.29</code>。我还安装<br>了 <code>v0.11.14</code>，但它并非我当前使用的版本。</p>
+<p>如果你那里没有出现绿色小箭头的话，告诉 nvm 你要使用 <code>0.12.x</code> 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm use 0.12</div></pre></td></tr></table></figure>
+<p>然后再次查看，这时候小箭头应该出现了。</p>
+<p>OK，我们在终端中输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ node</div></pre></td></tr></table></figure>
+<p>REPL(read–eval–print loop) 应该就出来了，那我们就成功了。</p>
+<p>随便敲两行命令玩玩吧。</p>
+<p>比如 <code>&gt; while (true) {}</code>，这时你的 CPU 应该会飚高。</p>
+<h3 id="完善安装"><a href="#完善安装" class="headerlink" title="完善安装"></a>完善安装</h3><p>上述过程完成后，有时会出现，当开启一个新的 shell 窗口时，找不到 node 命令的情况。</p>
+<p>这种情况一般来自两个原因</p>
+<p>一、shell 不知道 nvm 的存在</p>
+<p>二、nvm 已经存在，但是没有 default 的 Node.js 版本可用。</p>
+<p>解决方式：</p>
+<p>一、检查 <code>~/.profile</code> 或者 <code>~/.bash_profile</code> 中有没有这样两句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export NVM_DIR=&quot;/Users/YOURUSERNAME/.nvm&quot;</div><div class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</div></pre></td></tr></table></figure>
+<p>没有的话，加进去。</p>
+<p>这两句会在 bash 启动的时候被调用，然后注册 nvm 命令。</p>
+<p>二、</p>
+<p>调用</p>
+<p><code>$ nvm ls</code></p>
+<p>看看像不像上述图1中一样，有 default 的指向。</p>
+<p>如果没有的话，执行</p>
+<p><code>$ nvm alias default 0.12</code></p>
+<p>再</p>
+<p><code>$ nvm ls</code></p>
+<p>看一下</p>
+<h4 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h4><p>首先创建一个js文件，这里我命名为app.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  res.send(<span class="string">'Hello World'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(3000, <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(<span class="string">'app is listening at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这句的意思就是引入 `express` 模块，并将它赋予 `express` 这个变量等待使用。</span></div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="comment">// 调用 express 实例，它是一个函数，不带参数调用时，会返回一个 express 实例，将这个变量赋予 app 变量。</span></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line"><span class="comment">// app 本身有很多方法，其中包括最常用的 get、post、put/patch、delete，在这里我们调用其中的 get 方法，为我们的 `/` 路径指定一个 handler 函数。</span></div><div class="line"><span class="comment">// 这个 handler 函数会接收 req 和 res 两个对象，他们分别是请求的 request 和 response。</span></div><div class="line"><span class="comment">// request 中包含了浏览器传来的各种信息，比如 query 啊，body 啊，headers 啊之类的，都可以通过 req 对象访问到。</span></div><div class="line"><span class="comment">// res 对象，我们一般不从里面取信息，而是通过它来定制我们向浏览器输出的信息，比如 header 信息，比如想要向浏览器输出的内容。这里我们调用了它的 #send 方法，向浏览器输出一个字符串。</span></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'Hello World'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 定义好我们 app 的行为之后，让它监听本地的 3000 端口。这里的第二个函数是个回调函数，会在 listen 动作成功后执行，我们这里执行了一个命令行输出操作，告诉我们监听动作已完成。</span></div><div class="line">app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'app is listening at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>然后打开cmd 运行app.js文件我们可以看到</p>
+<p><img src="/img/cmdorder.png" alt="cmd命令"></p>
+<p>在浏览器中显示的内容</p>
+<p><img src="/img/helloworld.png" alt="内容"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React表单</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">node nvm</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/04/node第一天/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/19/sass语法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          sass语法
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/07/04/node第二天/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">node第二天</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="node第一天" data-title="node第一天" data-url="http://yoursite.com/2017/07/04/node第一天/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2017/07/04/node第一天/", 
+    sourceId: "node第一天",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -225,9 +411,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",

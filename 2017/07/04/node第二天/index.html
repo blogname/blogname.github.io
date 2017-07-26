@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: React表单 | Hexo</title>
+  <title>node第二天 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/React表单/index.html">
+  <meta name="description" content="package.json的作用在这里我们要引入utility，需要在package.json中进行配置 app.js中代码如下1234567891011121314151617//引入依赖var express = require(&apos;express&apos;);var utility = require(&apos;utility&apos;);var app = express();app.get(&apos;/&apos;, functio">
+<meta name="keywords" content="node utility">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node第二天">
+<meta property="og:url" content="http://yoursite.com/2017/07/04/node第二天/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="package.json的作用在这里我们要引入utility，需要在package.json中进行配置 app.js中代码如下1234567891011121314151617//引入依赖var express = require(&apos;express&apos;);var utility = require(&apos;utility&apos;);var app = express();app.get(&apos;/&apos;, functio">
+<meta property="og:image" content="http://yoursite.com/img/1.png">
+<meta property="og:image" content="http://yoursite.com/img/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/alsotang/node-lessons/master/lesson2/3.png">
+<meta property="og:updated_time" content="2017-07-10T01:56:00.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="node第二天">
+<meta name="twitter:description" content="package.json的作用在这里我们要引入utility，需要在package.json中进行配置 app.js中代码如下1234567891011121314151617//引入依赖var express = require(&apos;express&apos;);var utility = require(&apos;utility&apos;);var app = express();app.get(&apos;/&apos;, functio">
+<meta name="twitter:image" content="http://yoursite.com/img/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,60 +158,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-node第二天" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/21/React表单组件/" class="archive-article-date">
-  	<time datetime="2017-04-21T04:45:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/21/React表单组件/">React表单组件</a>
+    <h1 class="article-title" itemprop="name">
+      node第二天
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/04/node第二天/" class="archive-article-date">
+  	<time datetime="2017-07-04T08:12:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="package-json的作用"><a href="#package-json的作用" class="headerlink" title="package.json的作用"></a>package.json的作用</h4><p>在这里我们要引入utility，需要在package.json中进行配置<br><img src="/img/1.png" alt="package.json中的配置"></p>
+<p>app.js中代码如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//引入依赖</div><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var utility = require(<span class="string">'utility'</span>);</div><div class="line">var app = express();</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">//获得请求头部</div><div class="line">  var q = req.query.q;</div><div class="line">  //使用md5进行加密</div><div class="line">  var md5Value = utility.md5(q);</div><div class="line"></div><div class="line">  res.send(md5Value);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(3000, <span class="keyword">function</span> (req, res) &#123;</div><div class="line">  console.log(<span class="string">'app is running at port 3000'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这里我们在cmd中运行app.js，但是这次不同的地方在于，我们访问的网页地址需要作出一些变化<br>访问 <code>http://localhost:3000/?q=alsotang</code> 完成<br>结果如下</p>
+<p><img src="/img/4.png" alt="浏览器效果"></p>
+<h4 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h4><p>如果直接访问 <code>http://localhost:3000/</code> 会抛错</p>
+<p><img src="https://raw.githubusercontent.com/alsotang/node-lessons/master/lesson2/3.png" alt=""></p>
+<p>可以看到，这个错误是从 <code>crypto.js</code> 中抛出的。</p>
+<p>这是因为，当我们不传入 <code>q</code> 参数时，<code>req.query.q</code> 取到的值是 <code>undefined</code>，<code>utility.md5</code> 直接使用了这个空值，导致下层的 <code>crypto</code> 抛错。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React表单</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">node utility</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/04/node第二天/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/04/node第一天/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          node第一天
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/07/05/React井字小游戏/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React井字小游戏</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="node第二天" data-title="node第二天" data-url="http://yoursite.com/2017/07/04/node第二天/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2017/07/04/node第二天/", 
+    sourceId: "node第二天",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -225,9 +371,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
