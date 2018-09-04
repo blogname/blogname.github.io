@@ -15,12 +15,12 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/19/sass语法/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="SASS语法（上）   学过CSS的人都知道，它不是一种编程语言。       你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。   很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的">
-<meta property="og:image" content="http://yoursite.com/img/logo-b6e1ef6e.svg">
-<meta property="og:updated_time" content="2017-05-19T06:25:09.634Z">
+<meta property="og:image" content="http://yoursite.com/img/sass.png">
+<meta property="og:updated_time" content="2018-09-03T09:26:40.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sass语法">
 <meta name="twitter:description" content="SASS语法（上）   学过CSS的人都知道，它不是一种编程语言。       你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。   很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的">
-<meta name="twitter:image" content="http://yoursite.com/img/logo-b6e1ef6e.svg">
+<meta name="twitter:image" content="http://yoursite.com/img/sass.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="SASS语法（上）"><a href="#SASS语法（上）" class="headerlink" title="SASS语法（上）"></a>SASS语法（上）</h2><p>   学过CSS的人都知道，它不是一种编程语言。</p>
-<p>   <img src="/img/logo-b6e1ef6e.svg" alt="组件生命周期"><br>   你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。<br>   很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。各种”CSS预处理器”之中，我自己最喜欢SASS，觉得它有很多优点，打算以后都用它来写CSS。</p>
+<p>   <img src="/img/sass.png" alt=""><br>   你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。<br>   很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。各种”CSS预处理器”之中，我自己最喜欢SASS，觉得它有很多优点，打算以后都用它来写CSS。</p>
 <p>   下面是我整理的sass用法总结。</p>
 <h3 id="文件后缀名"><a href="#文件后缀名" class="headerlink" title="文件后缀名"></a>文件后缀名</h3><p>sass有两种后缀名文件：一种后缀名为sass，不使用大括号和分号；另一种就是我们这里使用的scss文件，这种和我们平时写的css文件格式差不多，使用大括号和分号。而本教程中所说的所有sass文件都指后缀名为scss的文件。在此也建议使用后缀名为scss的文件，以避免sass后缀名的严格格式要求报错。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//文件后缀名为sass的语法</div><div class="line">body</div><div class="line">  background: <span class="comment">#eee</span></div><div class="line">  font-size:12px</div><div class="line">p</div><div class="line">  background: <span class="comment">#0982c1</span></div><div class="line"></div><div class="line">//文件后缀名为scss的语法</div><div class="line">body &#123;</div><div class="line">  background: <span class="comment">#eee;</span></div><div class="line">  font-size:12px;</div><div class="line">&#125;</div><div class="line">p&#123;</div><div class="line">  background: <span class="comment">#0982c1;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -445,6 +445,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Vue px rem</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Vue axios vuex vue-router</a>
               </li>
              
               <li class="article-tag-list-item">

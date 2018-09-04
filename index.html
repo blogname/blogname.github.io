@@ -151,6 +151,118 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/04/cc/">cc</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/04/cc/" class="archive-article-date">
+  	<time datetime="2018-09-04T03:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/04/cc/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-Vue旅行小账本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/Vue旅行小账本/">Vue旅行小账本 第一版</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/03/Vue旅行小账本/" class="archive-article-date">
+  	<time datetime="2018-09-03T08:55:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Vue旅行小账本"><a href="#Vue旅行小账本" class="headerlink" title="Vue旅行小账本"></a>Vue旅行小账本</h3><p>闲来无事，学习了一段时间的Vue，顺带着把axios vuex vue-router也整体走了一遍，但是一直苦于没有合适的练手项目，直到最近看到微信小程序版的旅行小账本，才发现这个项目才是我一直寻找的。话不多说，直接进入主题。</p>
+<p>前期准备，首先大体上看了一遍小程序版的旅行小账本的页面和基本交互，大致确定了技术方案<br>因为页面结构简单，所以没有使用vue的ui库，选取了vue-cli进行开发，vue-cli进行rem适配和其他的一些细节，这里我就不再多讲了，大家有兴趣可以看我另一篇博文。<a href="https://blogname.github.io/2018/08/15/Vue-%E5%B0%86px%E8%BD%AC%E5%8C%96%E4%B8%BArem/" target="_blank" rel="external">Vue将px转化为rem</a><br>在数据获取方面，选取了很火的axios，因为没有后台程序，所以数据接口暂时用easy-mock来进行模拟，<br>数据的存储，没有后台接口可用，暂时使用vuex进行存储。</p>
+<h3 id="easy-mock进行数据模拟"><a href="#easy-mock进行数据模拟" class="headerlink" title="easy-mock进行数据模拟"></a>easy-mock进行数据模拟</h3><p>  <img src="/img/easy-mock-1.jpg" alt="模拟数据的接口"><br>  easy-mock可用很简单地模拟和管理接口非常方便，就拿我们的启动页来说吧<br>  我这里的大致方案是，在路由里进行配置，当项目初始化时，进入启动页面，再由启动页面设置定时器，到时间跳转到首页，下面是具体方案和优化</p>
+<h5 id="页面路由的配置"><a href="#页面路由的配置" class="headerlink" title="页面路由的配置"></a>页面路由的配置</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">import Vue from <span class="string">'vue'</span></div><div class="line">import Router from <span class="string">'vue-router'</span></div><div class="line">const Index = resolve =&gt; require([<span class="string">'view/index/index'</span>], resolve)</div><div class="line">const startUp = resolve =&gt; require([<span class="string">'view/start-up/start-up'</span>], resolve)</div><div class="line">const addTravelInfo = resolve =&gt; require([<span class="string">'view/add-travel-info/add-travel-info'</span>], resolve)</div><div class="line">const chioceTravelBg = resolve =&gt; require([<span class="string">'view/chioce-travel-bg/chioce-travel-bg'</span>], resolve)</div><div class="line">const travelInfo = resolve =&gt; require([<span class="string">'view/travel-info/travel-info'</span>], resolve)</div><div class="line">const travelPayInfo = resolve =&gt; require([<span class="string">'view/travel-pay-info/travel-pay-info'</span>], resolve)</div><div class="line">Vue.use(Router)</div><div class="line"></div><div class="line"><span class="built_in">export</span> default new Router(&#123;</div><div class="line">  routes: [</div><div class="line">    &#123;</div><div class="line">      path: <span class="string">'/'</span>,</div><div class="line">      redirect: <span class="string">'/startUp'</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      path: <span class="string">'/startUp'</span>, // 启动页面只显示5秒</div><div class="line">      name: <span class="string">'startUp'</span>,</div><div class="line">      component: startUp</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      path: <span class="string">'/Index'</span>, // 首页入口</div><div class="line">      name: <span class="string">'Index'</span>,</div><div class="line">      component: Index</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      path: <span class="string">'/addTravelInfo'</span>, // 添加旅行账单页面</div><div class="line">      name: <span class="string">'addTravelInfo'</span>,</div><div class="line">      component: addTravelInfo</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      path: <span class="string">'/chioceTravelBg'</span>, // 选择背景图片</div><div class="line">      name:<span class="string">'chioceTravelBg'</span>,</div><div class="line">      component: chioceTravelBg</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      path:<span class="string">'/travelInfo/:id'</span>,  //详情页面</div><div class="line">      name:<span class="string">'travelInfo'</span>,</div><div class="line">      component:travelInfo</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      path:<span class="string">'/travelPayInfo'</span>,   //新增开支页面</div><div class="line">      name:<span class="string">'travelPayInfo'</span>,</div><div class="line">      component:travelPayInfo</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>在进入页面时我们需要进行数据的获取，使用axios进行了简单的封装，获取easy mock的接口数据，这里只是一个简单的数据获取与展示，easy mock的本质就是随机的数据，刚好页面启动页每次需要获取的数据都是随机的，所以使用起来很方便。<br>下面这里是easy mock数据格式的写法，模拟随机返回一个对象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"data"</span>: &#123;</div><div class="line">    <span class="string">'status'</span>: 200,</div><div class="line">    <span class="string">'image|1'</span>: [&#123;</div><div class="line">        <span class="string">'imgUrl'</span>: <span class="string">'static/start-up-1.jpg'</span>,</div><div class="line">        <span class="string">'imgAlt'</span>: <span class="string">'悬崖大海'</span>,</div><div class="line">        <span class="string">'imgAuthor'</span>: <span class="string">'学涯'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="string">'imgUrl'</span>: <span class="string">'static/start-up-2.jpg'</span>,</div><div class="line">        <span class="string">'imgAlt'</span>: <span class="string">'远方的旅行'</span>,</div><div class="line">        <span class="string">'imgAuthor'</span>: <span class="string">'桃花'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="string">'imgUrl'</span>: <span class="string">'static/start-up-3.jpg'</span>,</div><div class="line">        <span class="string">'imgAlt'</span>: <span class="string">'朦胧乡村'</span>,</div><div class="line">        <span class="string">'imgAuthor'</span>: <span class="string">'季青'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="string">'imgUrl'</span>: <span class="string">'static/start-up-4.jpg'</span>,</div><div class="line">        <span class="string">'imgAlt'</span>: <span class="string">'心中的旅行'</span>,</div><div class="line">        <span class="string">'imgAuthor'</span>: <span class="string">'薛慧'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="string">'imgUrl'</span>: <span class="string">'static/start-up-5.jpg'</span>,</div><div class="line">        <span class="string">'imgAlt'</span>: <span class="string">'心中的孤岛'</span>,</div><div class="line">        <span class="string">'imgAuthor'</span>: <span class="string">'忘记'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="string">'imgUrl'</span>: <span class="string">'static/start-up-6.jpg'</span>,</div><div class="line">        <span class="string">'imgAlt'</span>: <span class="string">'宁静的古堡'</span>,</div><div class="line">        <span class="string">'imgAuthor'</span>: <span class="string">'凌燕'</span></div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>###优化<br>接口数据渲染方面进行了基本的优化，easy mock的数据请求速度比较慢，很容易由于页面在渲染时图片链接暂时没有，导致图片盒子在页面上有一条边框，不是很美观，所以这里进行了判断，如果链接请求不回来的话，不让img标签显示。<br><img src="/img/start-up-2.jpg" alt="优化"></p>
+<p>启动页面跳转到首页，前期也是由于，考虑到请求接口时，网络状况不太好，如果一进入页面就执行定时器，那么很有可能，页面上的图片还没加载出来，就直接跳转到了首页，所以我们这里进行了优化处理，当数据请求成功以后，再执行定时器。<br><img src="/img/start-up-3.jpg" alt="优化"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Vue axios vuex vue-router</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/03/Vue旅行小账本/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Vue-将px转化为rem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -483,7 +595,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="SASS语法（上）"><a href="#SASS语法（上）" class="headerlink" title="SASS语法（上）"></a>SASS语法（上）</h2><p>   学过CSS的人都知道，它不是一种编程语言。</p>
-<p>   <img src="/img/logo-b6e1ef6e.svg" alt="组件生命周期"><br>   你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。<br>   很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。各种”CSS预处理器”之中，我自己最喜欢SASS，觉得它有很多优点，打算以后都用它来写CSS。</p>
+<p>   <img src="/img/sass.png" alt=""><br>   你可以用它开发网页样式，但是没法用它编程。也就是说，CSS基本上是设计师的工具，不是程序员的工具。在程序员眼里，CSS是一件很麻烦的东西。它没有变量，也没有条件语句，只是一行行单纯的描述，写起来相当费事。<br>   很自然地，有人就开始为CSS加入编程元素，这被叫做”CSS预处理器”（css preprocessor）。它的基本思想是，用一种专门的编程语言，进行网页样式设计，然后再编译成正常的CSS文件。各种”CSS预处理器”之中，我自己最喜欢SASS，觉得它有很多优点，打算以后都用它来写CSS。</p>
 <p>   下面是我整理的sass用法总结。</p>
 <h3 id="文件后缀名"><a href="#文件后缀名" class="headerlink" title="文件后缀名"></a>文件后缀名</h3><p>sass有两种后缀名文件：一种后缀名为sass，不使用大括号和分号；另一种就是我们这里使用的scss文件，这种和我们平时写的css文件格式差不多，使用大括号和分号。而本教程中所说的所有sass文件都指后缀名为scss的文件。在此也建议使用后缀名为scss的文件，以避免sass后缀名的严格格式要求报错。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//文件后缀名为sass的语法</div><div class="line">body</div><div class="line">  background: <span class="comment">#eee</span></div><div class="line">  font-size:12px</div><div class="line">p</div><div class="line">  background: <span class="comment">#0982c1</span></div><div class="line"></div><div class="line">//文件后缀名为scss的语法</div><div class="line">body &#123;</div><div class="line">  background: <span class="comment">#eee;</span></div><div class="line">  font-size:12px;</div><div class="line">&#125;</div><div class="line">p&#123;</div><div class="line">  background: <span class="comment">#0982c1;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -715,190 +827,6 @@
 
 
   
-    <article id="post-React组件生命周期" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/24/React组件生命周期/">React组件生命周期</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/24/React组件生命周期/" class="archive-article-date">
-  	<time datetime="2017-04-24T04:45:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="React-组件生命周期"><a href="#React-组件生命周期" class="headerlink" title="React 组件生命周期"></a>React 组件生命周期</h1><p><a href="http://react-china.org/" target="_blank" rel="external">React</a>组件的生命周期可分成三个状态：</p>
-<p><em>Mounting</em>：已插入真实 DOM<br><em>Updating</em>：正在被重新渲染<br><em>Unmounting</em>：已移出真实 DOM</p>
-<p><img src="/img/ajs-life.png" alt="组件生命周期"></p>
-<p><strong>componentWillMount</strong> 在渲染前调用,在客户端也在服务端。</p>
-<p><strong>componentDidMount</strong> 在第一次渲染后调用，只在客户端。之后组件已经生成了对应的DOM结构，可以通过this.getDOMNode()来进行访问。 如果你想和其他JavaScript框架一起使用，可以在这个方法中调用setTimeout, setInterval或者发送AJAX请求等操作(防止异部操作阻塞UI)。</p>
-<p><strong>componentWillReceiveProps</strong> 在组件接收到一个新的prop时被调用。这个方法在初始化render时不会被调用。</p>
-<p><strong>shouldComponentUpdate</strong> 返回一个布尔值。在组件接收到新的props或者state时被调用。在初始化时或者使用forceUpdate时不被调用。可以在你确认不需要更新组件时使用。</p>
-<p><strong>componentWillUpdate</strong> 在组件接收到新的props或者state但还没有render时被调用。在初始化时不会被调用。</p>
-<p><strong>componentDidUpdate</strong> 在组件完成更新后立即调用。在初始化时不会被调用。</p>
-<p><strong>componentWillUnmount</strong> 在组件从 DOM 中移除的时候立刻被调用。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>生命周期的回调函数</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">生命周期</th>
-<th style="text-align:right">调用次数</th>
-<th style="text-align:center">能否使用setSate()</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">getDefaultProps</td>
-<td style="text-align:right">1(全局调用一次)</td>
-<td style="text-align:center">否</td>
-</tr>
-<tr>
-<td style="text-align:left">getInitialState</td>
-<td style="text-align:right">1</td>
-<td style="text-align:center">否</td>
-</tr>
-<tr>
-<td style="text-align:left">componentWillMount</td>
-<td style="text-align:right">1</td>
-<td style="text-align:center">是</td>
-</tr>
-<tr>
-<td style="text-align:left">render</td>
-<td style="text-align:right">&gt;=1</td>
-<td style="text-align:center">否</td>
-</tr>
-<tr>
-<td style="text-align:left">componentDidMount</td>
-<td style="text-align:right">1</td>
-<td style="text-align:center">是</td>
-</tr>
-<tr>
-<td style="text-align:left">componentWillReceiveProps</td>
-<td style="text-align:right">&gt;=0</td>
-<td style="text-align:center">是</td>
-</tr>
-<tr>
-<td style="text-align:left">shouldComponentUpdate</td>
-<td style="text-align:right">&gt;=0</td>
-<td style="text-align:center">否</td>
-</tr>
-<tr>
-<td style="text-align:left">componentWillUpdate</td>
-<td style="text-align:right">&gt;=0</td>
-<td style="text-align:center">否</td>
-</tr>
-<tr>
-<td style="text-align:left">componentDidUpdate</td>
-<td style="text-align:right">&gt;=0</td>
-<td style="text-align:center">否</td>
-</tr>
-<tr>
-<td style="text-align:left">componentWillUnmount</td>
-<td style="text-align:right">1</td>
-<td style="text-align:center">否</td>
-</tr>
-</tbody>
-</table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/24/React组件生命周期/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-React表单组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/21/React表单组件/">React表单组件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/21/React表单组件/" class="archive-article-date">
-  	<time datetime="2017-04-21T04:45:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、像是input、textarea、option这样的表单组件不同于其他组件，因为他们可以通过用户交互发生变化。这些组件提供的界面使响应用户交互的表单数据处理更加容易。<br>2、交互属性<br>表单组件支持几个受用户交互影响的属性<br>value，用于input、textarea组件；checked，用于类型为checkbox或者radio的input组件；selected，用于option组件。<br>在HTML中，textarea的值通过子节点设置，在React中则应该使用value代替。表单组件可以通过onChange会调函数来监听组件变化。当用户做出以下交互时，onChange执行并通过浏览器做出响应：</p>
-<ul>
-<li>input 或 textarea 的 value 发生变化时。</li>
-<li>input 的 checked 状态改变时。</li>
-<li>option 的 selected 状态改变时。</li>
-</ul>
-<p>和所有的DOM事件一样，所有的HTML原生组件都支持onChange属性，而且可以用来监听冒泡的change事件。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React表单</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/21/React表单组件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1001,6 +929,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Vue px rem</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Vue axios vuex vue-router</a>
               </li>
              
               <li class="article-tag-list-item">
